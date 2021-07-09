@@ -41,9 +41,10 @@ type MySampleApp struct {
 	metav1.ObjectMeta
 	exampleString string
 	exampleInt    int
+	description   string
 }
 
-func New(namespace string, name string, exampleString string, exampleInt int) *MySampleApp {
+func New(namespace string, name string, description string, exampleString string, exampleInt int) *MySampleApp {
 	return &MySampleApp{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:            name,
@@ -61,6 +62,7 @@ func New(namespace string, name string, exampleString string, exampleInt int) *M
 		},
 		exampleInt:    exampleInt,
 		exampleString: exampleString,
+		description:   description,
 	}
 }
 
@@ -109,4 +111,8 @@ func (v *MySampleApp) Uninstall(client *kubernetes.Clientset) error {
 
 func (v *MySampleApp) Meta() *metav1.ObjectMeta {
 	return &v.ObjectMeta
+}
+
+func (v *MySampleApp) Description() string {
+	return v.description
 }

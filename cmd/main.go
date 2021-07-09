@@ -27,19 +27,19 @@ import (
 
 	"github.com/kris-nova/logger"
 	"github.com/kris-nova/naml"
-	app "github.com/kris-nova/naml/example/simple"
+	app "github.com/naml-examples/simple"
 )
 
 // main is the main entry point for your CLI application
 func main() {
 	// Define your application
-	a := app.New("default", "simple-app", "beeps-boops", 17)
+	a := app.New("default", "simple-app", "a great app", "beeps-boops", 17)
 
 	// Register your application with naml
 	naml.Register(a)
 
 	// Run the default CLI tooling
-	err := naml.RunCLI(app.Version)
+	err := naml.RunCommandLine()
 	if err != nil {
 		logger.Critical("%v", err)
 		os.Exit(1)

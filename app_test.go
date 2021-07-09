@@ -26,14 +26,12 @@ import (
 	"os"
 	"testing"
 
-	naml2 "github.com/kris-nova/naml"
-
 	"github.com/kris-nova/logger"
 )
 
 // TestMain will bootstrap and tear down our testing cluster.
 func TestMain(m *testing.M) {
-	err := naml2.TestClusterStart()
+	err := naml.TestClusterStart()
 	if err != nil {
 		logger.Critical(err.Error())
 		os.Exit(1)
@@ -46,7 +44,7 @@ func TestMain(m *testing.M) {
 // TestApp is an example integration test that can be used to
 // install and uninstall a sample application in Kubernetes.
 func TestApp(t *testing.T) {
-	client, err := naml2.ClientFromPath(naml2.TestClusterKubeConfigPath())
+	client, err := naml.ClientFromPath(naml2.TestClusterKubeConfigPath())
 	if err != nil {
 		t.Errorf("unable to create client: %v", err)
 	}
