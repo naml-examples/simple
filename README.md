@@ -6,9 +6,11 @@ A basic example of how to build a [naml](https://github.com/kris-nova/naml) proj
 
 Every project should define an `app.go` file.
 
-The file should implement the `Deployable{}` interface.
+The file should implement the `v0.2.0` `Deployable{}` interface.
 
 ```go
+
+// Deployable v0.2.0
 type Deployable interface {
 
     // Install will attempt to install in Kubernetes
@@ -19,6 +21,9 @@ type Deployable interface {
 
     // Meta returns the Kubernetes native ObjectMeta which is used to manage applications with naml.
     Meta() *v1.ObjectMeta
+    
+    // Description of your application
+    Description string
 }
 ```
 
