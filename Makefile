@@ -20,11 +20,11 @@
 #     ╚═╝  ╚═══╝ ╚═════╝   ╚═══╝  ╚═╝  ╚═╝
 
 all: compile
-version=$(shell git rev-parse HEAD)
+version=0.0.1
 
 compile: ## Compile for the local architecture ⚙
 	@echo "Compiling..."
-	go build -ldflags "-X 'github.com/kris-nova/naml/example/simple.Version=$(version)'" -o app cmd/*.go
+	go build -ldflags "-X 'github.com/kris-nova/naml/example/simple.Version=$(version)'" -o app busybox.go
 
 install: ## Install your naml 🎉
 	@echo "Installing..."
